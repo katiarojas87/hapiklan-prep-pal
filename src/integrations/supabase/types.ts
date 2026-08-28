@@ -14,13 +14,84 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      newsletter_subscribers: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+        }
+        Relationships: []
+      }
+      preorders: {
+        Row: {
+          address: string
+          bundle_id: string
+          city: string
+          country: string
+          created_at: string
+          email: string
+          first_name: string
+          id: string
+          last_name: string
+          phone: string | null
+          postal_code: string
+          total_cents: number
+          units: number
+        }
+        Insert: {
+          address: string
+          bundle_id: string
+          city: string
+          country?: string
+          created_at?: string
+          email: string
+          first_name: string
+          id?: string
+          last_name: string
+          phone?: string | null
+          postal_code: string
+          total_cents: number
+          units: number
+        }
+        Update: {
+          address?: string
+          bundle_id?: string
+          city?: string
+          country?: string
+          created_at?: string
+          email?: string
+          first_name?: string
+          id?: string
+          last_name?: string
+          phone?: string | null
+          postal_code?: string
+          total_cents?: number
+          units?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      preorder_progress: {
+        Args: never
+        Returns: {
+          orders_count: number
+          units_reserved: number
+        }[]
+      }
     }
     Enums: {
       [_ in never]: never
