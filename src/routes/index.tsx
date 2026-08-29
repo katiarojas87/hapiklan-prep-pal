@@ -1,24 +1,53 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+import { Header } from "@/components/site/Header";
+import { Hero } from "@/components/site/Hero";
+import { TrustBar } from "@/components/site/TrustBar";
+import { BundleSelector } from "@/components/site/BundleSelector";
+import { GoalCounter } from "@/components/site/GoalCounter";
+import { InTheBox } from "@/components/site/InTheBox";
+import { HowItWorks } from "@/components/site/HowItWorks";
+import { QrFeature } from "@/components/site/QrFeature";
+import { StatBlock } from "@/components/site/StatBlock";
+import { Faq } from "@/components/site/Faq";
+import { Newsletter } from "@/components/site/Newsletter";
+import { Footer } from "@/components/site/Footer";
+
+const title = "Hapiklan — Le jeu de préparation à l'accouchement et au postpartum";
+const description =
+  "100 cartes et des vidéos de professionnels pour préparer votre grossesse, votre accouchement et votre postpartum à deux. Précommandes ouvertes, édition limitée à 500 jeux.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      <Header />
+      <main>
+        <Hero />
+        <TrustBar />
+        <BundleSelector />
+        <GoalCounter />
+        <InTheBox />
+        <HowItWorks />
+        <QrFeature />
+        <StatBlock />
+        <Faq />
+        <Newsletter />
+      </main>
+      <Footer />
+    </>
   );
 }

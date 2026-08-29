@@ -11,7 +11,7 @@ export type Bundle = {
   blurb: string;
 };
 
-export const BUNDLES: Bundle[] = [
+export const BUNDLES: [Bundle, Bundle, Bundle] = [
   {
     id: "couple",
     name: "Mon Couple",

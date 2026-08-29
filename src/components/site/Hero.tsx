@@ -36,7 +36,7 @@ export function Hero() {
               alt="Un couple découvre une carte Hapiklan à la maison pendant la grossesse"
               width={1600}
               height={1200}
-              className="aspect-[4/3] w-full object-cover"
+              className="aspect-[16/10] w-full object-cover md:aspect-[4/3]"
             />
           </div>
         </div>

@@ -1,19 +1,21 @@
-import { TRIMESTERS } from "@/lib/hapiklan";
-
 const steps = [
   {
+    label: "Trimestre 1",
     verb: "Tirez une carte",
     body: "Une seule, quand vous avez dix minutes ensemble. Pas de devoirs, pas de programme.",
   },
   {
+    label: "Trimestre 2",
     verb: "Discutez à deux",
     body: "La réponse est au dos : de l'info vérifiée, pas des avis de forum.",
   },
   {
+    label: "Trimestre 3",
     verb: "Scannez le QR code",
     body: "Sur certaines cartes, un pro de la périnatalité vous répond en vidéo.",
   },
   {
+    label: "Postpartum",
     verb: "Avancez ensemble",
     body: "Vous notez vos choix : projet de naissance, plan B, organisation du postpartum.",
   },
@@ -30,7 +32,6 @@ export function HowItWorks() {
 
         <ol className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {steps.map((s, i) => {
-            const t = TRIMESTERS[i];
             return (
               <li
                 key={s.verb}
@@ -40,7 +41,7 @@ export function HowItWorks() {
                   {i + 1}
                 </span>
                 <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                  {t.label}
+                  {s.label}
                 </p>
                 <h3 className="mt-1 font-display text-lg font-semibold">{s.verb}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{s.body}</p>
