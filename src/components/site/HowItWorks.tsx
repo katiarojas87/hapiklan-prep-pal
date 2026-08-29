@@ -1,19 +1,21 @@
-import { TRIMESTERS } from "@/lib/hapiklan";
-
 const steps = [
   {
+    label: "Trimestre 1",
     verb: "Tirez une carte",
     body: "Une seule, quand vous avez dix minutes ensemble. Pas de devoirs, pas de programme.",
   },
   {
+    label: "Trimestre 2",
     verb: "Discutez à deux",
     body: "La réponse est au dos : de l'info vérifiée, pas des avis de forum.",
   },
   {
+    label: "Trimestre 3",
     verb: "Scannez le QR code",
     body: "Sur certaines cartes, un pro de la périnatalité vous répond en vidéo.",
   },
   {
+    label: "Postpartum",
     verb: "Avancez ensemble",
     body: "Vous notez vos choix : projet de naissance, plan B, organisation du postpartum.",
   },
