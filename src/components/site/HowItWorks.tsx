@@ -32,7 +32,6 @@ export function HowItWorks() {
 
         <ol className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {steps.map((s, i) => {
-            const t = TRIMESTERS[i];
             return (
               <li
                 key={s.verb}
@@ -42,7 +41,7 @@ export function HowItWorks() {
                   {i + 1}
                 </span>
                 <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                  {t.label}
+                  {s.label}
                 </p>
                 <h3 className="mt-1 font-display text-lg font-semibold">{s.verb}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{s.body}</p>
