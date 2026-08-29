@@ -15,8 +15,8 @@ const description =
   "Finalisez votre précommande du jeu Hapiklan. Édition limitée à 500 exemplaires, livraison prévue en juin 2026.";
 
 export const Route = createFileRoute("/checkout")({
-  validateSearch: (search: Record<string, unknown>) => ({
-    pack: typeof search.pack === "string" ? search.pack : "couple",
+  validateSearch: (search: Record<string, unknown>): { pack: string } => ({
+    pack: typeof search["pack"] === "string" ? (search["pack"] as string) : "couple",
   }),
   head: () => ({
     meta: [
