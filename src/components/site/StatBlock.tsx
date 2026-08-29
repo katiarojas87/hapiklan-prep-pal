@@ -17,7 +17,7 @@ function Stat({
   return (
     <div className="rounded-2xl border border-border bg-card p-6 text-center shadow-soft">
       <p className="font-display text-5xl font-bold tabular-nums md:text-6xl">
-        {prefix}
+        <span className="text-2xl font-semibold text-muted-foreground md:text-3xl">{prefix}</span>
         {n}
         {suffix}
       </p>
@@ -40,8 +40,19 @@ export function StatBlock() {
         </div>
 
         <div className="mx-auto mt-8 grid max-w-3xl gap-4 sm:grid-cols-2">
-          <Stat value={1} prefix="" suffix=" femme sur 2" label="traverse un baby blues après l'accouchement" active={visible} />
-          <Stat value={20} suffix=" %" label="jusqu'à — de dépression du postpartum" active={visible} />
+          <Stat
+            value={50}
+            suffix=" %"
+            label="des femmes — 1 sur 2 — traversent un baby blues après l'accouchement"
+            active={visible}
+          />
+          <Stat
+            value={20}
+            prefix="jusqu'à "
+            suffix=" %"
+            label="développent une dépression du postpartum"
+            active={visible}
+          />
         </div>
 
         <p className="mx-auto mt-6 max-w-2xl text-center text-muted-foreground">

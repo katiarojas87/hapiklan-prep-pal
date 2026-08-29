@@ -74,7 +74,7 @@ export function BundleSelector() {
                     >
                       {active && <span className="h-2 w-2 rounded-full bg-primary-foreground" />}
                     </span>
-                    <h3 className="font-display text-base font-semibold">
+                    <h3 className="font-display text-base font-semibold pr-14 lg:pr-0">
                       {b.units}× {b.name}
                     </h3>
                   </div>
