@@ -46,12 +46,12 @@ export function TrustBar() {
         <p className="mt-10 text-center eyebrow">Accompagnés et soutenus par</p>
         <ul className="mt-5 flex flex-wrap items-center justify-center gap-x-8 gap-y-6">
           {logos.map((l) => (
-            <li key={l.alt}>
+            <li key={l.alt} className="rounded-lg bg-logo-plate px-2 py-1">
               <img
                 src={l.src}
                 alt={l.alt}
                 loading="lazy"
-                className="h-8 w-auto opacity-70 md:h-10"
+                className="h-8 w-auto opacity-80 md:h-10"
               />
             </li>
           ))}
