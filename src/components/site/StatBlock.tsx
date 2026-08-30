@@ -16,7 +16,7 @@ function Stat({
   const n = useCountUp(value, active, 1600);
   return (
     <div className="rounded-2xl border border-border bg-card p-6 text-center shadow-soft">
-      <p className="font-display text-5xl font-bold tabular-nums md:text-6xl">
+      <p className="font-display text-5xl font-black tabular-nums md:text-6xl">
         <span className="text-2xl font-semibold text-muted-foreground md:text-3xl">{prefix}</span>
         {n}
         {suffix}

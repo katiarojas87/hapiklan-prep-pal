@@ -33,7 +33,7 @@ export function GoalCounter() {
       <div ref={ref} className="container-page py-12 md:py-16">
         <div className="mx-auto max-w-2xl text-center">
           <p className="eyebrow text-primary-foreground/60">Objectif de précommande</p>
-          <p className="mt-3 font-display text-5xl font-bold tabular-nums md:text-6xl">
+          <p className="mt-3 font-display text-5xl font-black tabular-nums md:text-6xl">
             {shown}
             <span className="text-primary-foreground/50">/{PRESALE_GOAL}</span>
           </p>

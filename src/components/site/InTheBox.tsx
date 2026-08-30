@@ -8,6 +8,14 @@ import cardTendresse from "@/assets/brand/card-tendresse.webp";
 import cardCoquine from "@/assets/brand/card-coquine.webp";
 import infographic from "@/assets/brand/box-contents-infographic.webp";
 
+const compliceAccents: Record<string, string> = {
+  Action: "bg-card-action",
+  Discussion: "bg-card-discussion",
+  Souvenir: "bg-card-souvenir",
+  Tendresse: "bg-card-tendresse",
+  Coquine: "bg-card-coquine",
+};
+
 const compliceImages: Record<string, string> = {
   Action: cardAction,
   Discussion: cardDiscussion,
@@ -48,20 +56,20 @@ export function InTheBox() {
                     key={i}
                     className={[
                       "h-6 flex-1 rounded-sm",
-                      i < 15 ? "bg-primary/80" : i < 20 ? "bg-gold" : "bg-blush",
+                      i < 15 ? "bg-card-question" : i < 20 ? "bg-card-papa" : "bg-card-coquine",
                     ].join(" ")}
                   />
                 ))}
               </div>
               <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
                 <li className="flex items-center gap-1.5">
-                  <span className="h-2.5 w-2.5 rounded-sm bg-primary/80" /> 15 Questions
+                  <span className="h-2.5 w-2.5 rounded-sm bg-card-question" /> 15 Questions
                 </li>
                 <li className="flex items-center gap-1.5">
-                  <span className="h-2.5 w-2.5 rounded-sm bg-gold" /> 5 Papa
+                  <span className="h-2.5 w-2.5 rounded-sm bg-card-papa" /> 5 Papa
                 </li>
                 <li className="flex items-center gap-1.5">
-                  <span className="h-2.5 w-2.5 rounded-sm bg-blush" /> 5 Complices
+                  <span className="h-2.5 w-2.5 rounded-sm bg-card-coquine" /> 5 Complices
                 </li>
               </ul>
             </article>
@@ -87,7 +95,13 @@ export function InTheBox() {
                     className="h-14 w-14 rounded-lg object-cover"
                   />
                   <div>
-                    <p className="font-display text-sm font-semibold">Carte {c.name}</p>
+                    <p className="flex items-center gap-2 font-display text-sm font-bold">
+                      <span
+                        className={`h-2.5 w-2.5 shrink-0 rounded-full ${compliceAccents[c.name]}`}
+                        aria-hidden
+                      />
+                      Carte {c.name}
+                    </p>
                     <p className="text-xs text-muted-foreground">{c.desc}</p>
                   </div>
                 </li>

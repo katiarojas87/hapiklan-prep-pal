@@ -5,7 +5,10 @@ export function Footer() {
     <footer className="border-t border-border bg-primary text-primary-foreground">
       <div className="container-page flex flex-col gap-6 py-10 text-sm md:flex-row md:items-center md:justify-between">
         <div className="flex items-center gap-2">
-          <img src={logoFlower} alt="" width={28} height={28} loading="lazy" className="h-7 w-7" />
+          {/* Logo kept unmodified: placed on a white chip so it never sits directly on a coloured band. */}
+          <span className="grid h-10 w-10 place-items-center rounded-full bg-card p-1.5">
+            <img src={logoFlower} alt="" width={28} height={28} loading="lazy" className="h-7 w-7" />
+          </span>
           <span className="font-display text-base font-semibold">hapiklan</span>
         </div>
         <p className="max-w-md text-primary-foreground/70">

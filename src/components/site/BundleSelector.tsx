@@ -102,7 +102,7 @@ export function BundleSelector() {
               Pack sélectionné : <span className="font-semibold text-foreground">{selected.name}</span>{" "}
               · {selected.units} jeu{selected.units > 1 ? "x" : ""}
             </p>
-            <p className="font-display text-3xl font-bold tabular-nums">
+            <p className="font-display text-3xl font-black tabular-nums">
               {formatEur(total)}
               {total < full && (
                 <span className="ml-2 text-base font-normal text-muted-foreground line-through">

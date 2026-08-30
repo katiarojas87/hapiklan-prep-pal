@@ -5,13 +5,13 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Hapiklan design system — navy / warm gold / soft pink on cream.
+ * Hapiklan design system — official brand guide: coral / brick / yellow on blush.
  * All colors are oklch semantic tokens. Never hardcode colors in components.
  */
 
 @theme inline {
-  --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "Karla", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -42,58 +42,130 @@
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
 
-  /* Brand extras */
-  --color-cream: var(--cream);
-  --color-blush: var(--blush);
+  /* Brand extras — official palette */
+  --color-cream: var(--cream);              /* soft neutral surface */
+  --color-blush: var(--blush);              /* coral accent */
   --color-blush-foreground: var(--blush-foreground);
-  --color-gold: var(--gold);
+  --color-gold: var(--gold);                /* accent yellow */
   --color-gold-foreground: var(--gold-foreground);
   --color-sage: var(--sage);
   --color-lilac: var(--lilac);
   --color-ink: var(--ink);
+  --color-orange: var(--brand-orange);
+  --color-softpink: var(--softpink);
+  --color-logo-plate: var(--logo-plate);
 
-  --shadow-soft: 0 2px 6px -2px oklch(0.28 0.09 265 / 0.1), 0 12px 30px -12px oklch(0.28 0.09 265 / 0.18);
-  --shadow-lift: 0 4px 10px -4px oklch(0.28 0.09 265 / 0.14), 0 24px 48px -20px oklch(0.28 0.09 265 / 0.28);
+  /* Card category colours (official) */
+  --color-card-question: var(--card-question);
+  --color-card-papa: var(--card-papa);
+  --color-card-action: var(--card-action);
+  --color-card-discussion: var(--card-discussion);
+  --color-card-souvenir: var(--card-souvenir);
+  --color-card-tendresse: var(--card-tendresse);
+  --color-card-coquine: var(--card-coquine);
+
+  --shadow-soft: 0 2px 6px -2px oklch(0.17 0 0 / 0.08), 0 12px 30px -12px oklch(0.17 0 0 / 0.14);
+  --shadow-lift: 0 4px 10px -4px oklch(0.17 0 0 / 0.12), 0 24px 48px -20px oklch(0.17 0 0 / 0.2);
 }
 
 :root {
   --radius: 1rem;
 
-  --background: oklch(0.985 0.012 85);      /* cream */
-  --foreground: oklch(0.27 0.075 265);      /* navy ink */
+  --background: oklch(0.975 0.012 29.9);    /* #FFF4F2 blush */
+  --foreground: oklch(0.173 0 0);           /* #101010 */
 
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.27 0.075 265);
+  --card: oklch(1 0 0);                     /* #FFFFFF */
+  --card-foreground: oklch(0.173 0 0);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.27 0.075 265);
+  --popover-foreground: oklch(0.173 0 0);
 
-  --primary: oklch(0.34 0.095 264);         /* deep navy */
-  --primary-foreground: oklch(0.985 0.012 85);
+  --primary: oklch(0.587 0.144 21);         /* #C35356 brick */
+  --primary-foreground: oklch(1 0 0);
 
-  --secondary: oklch(0.955 0.02 80);
-  --secondary-foreground: oklch(0.34 0.095 264);
+  --secondary: oklch(0.977 0.002 165.1);    /* #F6F8F7 soft neutral */
+  --secondary-foreground: oklch(0.321 0 0);
 
-  --muted: oklch(0.955 0.016 80);
-  --muted-foreground: oklch(0.5 0.035 265);
+  --muted: oklch(0.977 0.002 165.1);
+  --muted-foreground: oklch(0.321 0 0);     /* #333333 */
 
-  --accent: oklch(0.78 0.14 72);            /* warm gold */
-  --accent-foreground: oklch(0.27 0.075 265);
+  --accent: oklch(0.811 0.169 78);          /* #FCB100 */
+  --accent-foreground: oklch(0.173 0 0);
 
-  --destructive: oklch(0.577 0.19 27);
-  --destructive-foreground: oklch(0.985 0.012 85);
+  --destructive: oklch(0.577 0.21 9.4);
+  --destructive-foreground: oklch(1 0 0);
 
-  --border: oklch(0.9 0.02 80);
-  --input: oklch(0.9 0.02 80);
-  --ring: oklch(0.78 0.14 72);
+  --border: oklch(0.9 0.05 21);             /* hairline from #FFBFBD */
+  --input: oklch(0.9 0.05 21);
+  --ring: oklch(0.587 0.144 21);
 
-  --cream: oklch(0.975 0.018 82);
-  --blush: oklch(0.83 0.09 15);             /* soft pink flower */
-  --blush-foreground: oklch(0.3 0.08 15);
-  --gold: oklch(0.8 0.145 72);
-  --gold-foreground: oklch(0.27 0.075 265);
-  --sage: oklch(0.87 0.06 155);
-  --lilac: oklch(0.88 0.05 300);
-  --ink: oklch(0.27 0.075 265);
+  --cream: oklch(0.977 0.002 165.1);
+  --blush: oklch(0.758 0.145 21);           /* #FF8888 coral */
+  --blush-foreground: oklch(0.173 0 0);
+  --gold: oklch(0.811 0.169 78);            /* #FCB100 */
+  --gold-foreground: oklch(0.173 0 0);
+  --sage: oklch(0.673 0.133 162.2);
+  --lilac: oklch(0.862 0.074 20.8);         /* #FFBFBD soft pink */
+  --ink: oklch(0.173 0 0);
+  --brand-orange: oklch(0.774 0.124 58.9);  /* #F0A160 */
+  --softpink: oklch(0.862 0.074 20.8);
+  --logo-plate: transparent;
+
+  --card-question: oklch(0.746 0.147 70);
+  --card-papa: oklch(0.299 0.135 273.1);
+  --card-action: oklch(0.659 0.195 37.6);
+  --card-discussion: oklch(0.56 0.186 265.6);
+  --card-souvenir: oklch(0.509 0.214 290.2);
+  --card-tendresse: oklch(0.673 0.133 162.2);
+  --card-coquine: oklch(0.577 0.21 9.4);
+}
+
+.dark {
+  --background: oklch(0.173 0 0);           /* #101010 */
+  --foreground: oklch(0.975 0.012 29.9);
+
+  --card: oklch(0.22 0.003 17.4);           /* #1C1A1A */
+  --card-foreground: oklch(0.975 0.012 29.9);
+  --popover: oklch(0.22 0.003 17.4);
+  --popover-foreground: oklch(0.975 0.012 29.9);
+
+  --primary: oklch(0.7 0.145 21);           /* lightened brick for contrast */
+  --primary-foreground: oklch(0.173 0 0);
+
+  --secondary: oklch(0.26 0.006 20);
+  --secondary-foreground: oklch(0.96 0.008 30);
+
+  --muted: oklch(0.26 0.006 20);
+  --muted-foreground: oklch(0.78 0.012 30);
+
+  --accent: oklch(0.811 0.169 78);
+  --accent-foreground: oklch(0.173 0 0);
+
+  --destructive: oklch(0.7 0.16 12);
+  --destructive-foreground: oklch(0.173 0 0);
+
+  --border: oklch(0.86 0.074 21 / 0.22);
+  --input: oklch(0.86 0.074 21 / 0.28);
+  --ring: oklch(0.758 0.145 21);
+
+  --cream: oklch(0.22 0.003 17.4);
+  --blush: oklch(0.758 0.145 21);
+  --blush-foreground: oklch(0.173 0 0);
+  --gold: oklch(0.811 0.169 78);
+  --gold-foreground: oklch(0.173 0 0);
+  --sage: oklch(0.72 0.13 162.2);
+  --lilac: oklch(0.862 0.074 20.8);
+  --ink: oklch(0.975 0.012 29.9);
+  --brand-orange: oklch(0.8 0.124 58.9);
+  --softpink: oklch(0.862 0.074 20.8);
+  --logo-plate: oklch(1 0 0 / 0.92);
+
+  --card-question: oklch(0.8 0.147 70);
+  --card-papa: oklch(0.55 0.17 273.1);
+  --card-action: oklch(0.72 0.185 37.6);
+  --card-discussion: oklch(0.68 0.16 265.6);
+  --card-souvenir: oklch(0.66 0.19 290.2);
+  --card-tendresse: oklch(0.75 0.13 162.2);
+  --card-coquine: oklch(0.7 0.19 9.4);
 }
 
 @layer base {
@@ -117,7 +189,8 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
+    font-weight: 700;
+    letter-spacing: -0.015em;
     text-wrap: balance;
   }
 }
@@ -149,8 +222,8 @@
 @utility eyebrow {
   font-family: var(--font-display);
   font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-muted-foreground);
 }
