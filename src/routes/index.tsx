@@ -12,6 +12,7 @@ import { StatBlock } from "@/components/site/StatBlock";
 import { Faq } from "@/components/site/Faq";
 import { Newsletter } from "@/components/site/Newsletter";
 import { Footer } from "@/components/site/Footer";
+import { VoucherPopup } from "@/components/site/VoucherPopup";
 
 const title = "Hapiklan — Le jeu de préparation à l'accouchement et au postpartum";
 const description =
@@ -48,6 +49,7 @@ function Index() {
         <Newsletter />
       </main>
       <Footer />
+      <VoucherPopup />
     </>
   );
 }
