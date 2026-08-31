@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as MerciRouteImport } from './routes/merci'
+import { Route as PrecommandeRouteImport } from './routes/precommande'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,35 +29,44 @@ const MerciRoute = MerciRouteImport.update({
   path: '/merci',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrecommandeRoute = PrecommandeRouteImport.update({
+  id: '/precommande',
+  path: '/precommande',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/checkout': typeof CheckoutRoute
   '/merci': typeof MerciRoute
+  '/precommande': typeof PrecommandeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/checkout': typeof CheckoutRoute
   '/merci': typeof MerciRoute
+  '/precommande': typeof PrecommandeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/checkout': typeof CheckoutRoute
   '/merci': typeof MerciRoute
+  '/precommande': typeof PrecommandeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/checkout' | '/merci'
+  fullPaths: '/' | '/checkout' | '/merci' | '/precommande'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/checkout' | '/merci'
-  id: '__root__' | '/' | '/checkout' | '/merci'
+  to: '/' | '/checkout' | '/merci' | '/precommande'
+  id: '__root__' | '/' | '/checkout' | '/merci' | '/precommande'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CheckoutRoute: typeof CheckoutRoute
   MerciRoute: typeof MerciRoute
+  PrecommandeRoute: typeof PrecommandeRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -82,6 +92,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MerciRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/precommande': {
+      id: '/precommande'
+      path: '/precommande'
+      fullPath: '/precommande'
+      preLoaderRoute: typeof PrecommandeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -89,6 +106,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CheckoutRoute: CheckoutRoute,
   MerciRoute: MerciRoute,
+  PrecommandeRoute: PrecommandeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
