@@ -7,15 +7,24 @@ export function Footer() {
         <div className="flex items-center gap-2">
           {/* Logo kept unmodified: placed on a white chip so it never sits directly on a coloured band. */}
           <span className="grid h-10 w-10 place-items-center rounded-full bg-card p-1.5">
-            <img src={logoFlower} alt="" width={28} height={28} loading="lazy" className="h-7 w-7" />
+            <img
+              src={logoFlower}
+              alt=""
+              width={28}
+              height={28}
+              loading="lazy"
+              className="h-7 w-7"
+            />
           </span>
           <span className="font-display text-base font-semibold">hapiklan</span>
         </div>
         <p className="max-w-md text-primary-foreground/70">
-          Le jeu de préparation à la grossesse, à l'accouchement et au postpartum. Édition limitée à
-          500 exemplaires — livraison prévue en juin 2026.
+          Le jeu de préparation à la grossesse, à l'accouchement et au postpartum. Lancement limité
+          à 200 précommandes — livraison prévue en juin 2026.
         </p>
-        <p className="text-primary-foreground/60">© {new Date().getFullYear()} Hapiklan · Bruxelles</p>
+        <p className="text-primary-foreground/60">
+          © {new Date().getFullYear()} Hapiklan · Bruxelles
+        </p>
       </div>
     </footer>
   );

@@ -8,7 +8,7 @@ export function Hero() {
     <section className="relative overflow-hidden bg-cream">
       <div className="container-page grid gap-8 pb-12 pt-8 md:pb-20 md:pt-16 lg:grid-cols-2 lg:items-center lg:gap-14">
         <div className="order-2 lg:order-1">
-          <p className="eyebrow">Précommandes ouvertes · Édition limitée</p>
+          <p className="eyebrow">Précommandes ouvertes · Places limitées</p>
           <h1 className="mt-3 text-[2rem] font-bold leading-[1.1] md:text-5xl lg:text-[3.4rem]">
             Reprenez le contrôle de votre accouchement, à deux.
           </h1>
@@ -25,7 +25,7 @@ export function Hero() {
               Précommander — 54,98 €
             </Link>
             <span className="text-sm text-muted-foreground">
-              Livraison juin 2026 · 500 jeux seulement
+              Livraison juin 2026 · 200 précommandes seulement
             </span>
           </div>
         </div>

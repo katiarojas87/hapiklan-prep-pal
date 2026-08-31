@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { EDITION_STOCK } from "@/lib/hapiklan";
+import { PRESALE_LIMIT } from "@/lib/hapiklan";
 import { Footer } from "@/components/site/Footer";
 import { Faq } from "@/components/site/Faq";
 import { PresaleHeader } from "@/components/presale/PresaleHeader";
@@ -13,9 +13,9 @@ import { PresaleSteps } from "@/components/presale/PresaleSteps";
 import { PresaleQuote } from "@/components/presale/PresaleQuote";
 import { PresaleAuthority } from "@/components/presale/PresaleAuthority";
 
-const title = "Précommander le jeu Hapiklan — édition limitée à 500 exemplaires";
+const title = "Précommander le jeu Hapiklan — lancement limité à 200 précommandes";
 const description =
-  "Précommandez le jeu Hapiklan : 100 cartes pour préparer votre grossesse, votre accouchement et votre postpartum à deux. Paiement à la commande, livraison juin 2026, édition limitée à 500 exemplaires.";
+  "Précommandez le jeu Hapiklan : 100 cartes pour préparer votre grossesse, votre accouchement et votre postpartum à deux. Paiement à la commande, livraison juin 2026, lancement limité à 200 précommandes.";
 
 export const Route = createFileRoute("/productpage")({
   head: () => ({
@@ -70,7 +70,7 @@ function Precommande() {
           <div className="container-page max-w-2xl text-center">
             <h2 className="text-2xl font-bold md:text-3xl">Prête à réserver votre exemplaire ?</h2>
             <p className="mt-3 text-muted-foreground">
-              Édition limitée à {EDITION_STOCK} exemplaires · paiement à la commande · livraison
+              Lancement limité à {PRESALE_LIMIT} précommandes · paiement à la commande · livraison
               prévue juin 2026 · annulation possible jusqu'à l'expédition.
             </p>
             <a

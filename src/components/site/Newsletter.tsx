@@ -22,8 +22,8 @@ export function Newsletter() {
       <div className="container-page max-w-2xl text-center">
         <h2 className="text-2xl font-bold md:text-3xl">Pas encore prête à précommander ?</h2>
         <p className="mt-3 text-muted-foreground">
-          Laissez votre e-mail : nous vous prévenons de l'avancée de la production, et si les 500
-          exemplaires partent plus vite que prévu.
+          Laissez votre e-mail : nous vous prévenons de l'avancée de la production, et si les 200
+          précommandes partent plus vite que prévu.
         </p>
 
         {state === "done" ? (

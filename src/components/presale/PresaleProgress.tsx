@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { EDITION_STOCK, PRESALE_GOAL } from "@/lib/hapiklan";
+import { PRESALE_LIMIT } from "@/lib/hapiklan";
 import { useCountUp, useReveal } from "@/hooks/use-reveal";
 import { progressQuery } from "@/components/site/GoalCounter";
 
@@ -11,19 +11,19 @@ import { progressQuery } from "@/components/site/GoalCounter";
  *  - `variant="band"`  full-width coloured band, used right under the hero
  *  - `variant="inline"` compact card, dropped next to a CTA further down
  *
- * Data source: the Supabase `preorder_progress` RPC (counts real rows in
- * `preorders`). [WIX — TODO] swap `progressQuery` for Wix inventory once the
- * store is the source of truth for the 500-unit cap.
+ * The launch is capped at PRESALE_LIMIT pre-orders — once that many orders
+ * exist, pre-orders close. Data source: the Supabase `preorder_progress` RPC
+ * (counts real rows in `preorders`). [WIX — TODO] swap `progressQuery` for a
+ * Wix order count once the store is the source of truth.
  */
 export function PresaleProgress({ variant = "band" }: { variant?: "band" | "inline" }) {
   const { data } = useQuery(progressQuery);
   const { ref, visible } = useReveal<HTMLDivElement>(0.3);
 
   const orders = data?.orders ?? 0;
-  const units = data?.units ?? 0;
-  const remaining = Math.max(0, EDITION_STOCK - units);
+  const remaining = Math.max(0, PRESALE_LIMIT - orders);
   const shownOrders = useCountUp(orders, visible && data !== undefined);
-  const goalPct = Math.min(100, (orders / PRESALE_GOAL) * 100);
+  const pct = Math.min(100, (orders / PRESALE_LIMIT) * 100);
 
   if (variant === "inline") {
     return (
@@ -33,21 +33,21 @@ export function PresaleProgress({ variant = "band" }: { variant?: "band" | "inli
         role="progressbar"
         aria-valuenow={orders}
         aria-valuemin={0}
-        aria-valuemax={PRESALE_GOAL}
+        aria-valuemax={PRESALE_LIMIT}
         aria-label="Progression des précommandes"
       >
         <p className="font-display text-sm font-bold">
           <span className="tabular-nums">{shownOrders}</span>
-          <span className="text-muted-foreground">/{PRESALE_GOAL} précommandé·e·s</span>
+          <span className="text-muted-foreground">/{PRESALE_LIMIT} précommandes</span>
         </p>
         <div className="mt-2 h-2.5 w-full overflow-hidden rounded-full bg-secondary">
           <div
             className="h-full rounded-full bg-gold transition-[width] duration-1000 ease-out"
-            style={{ width: `${visible ? Math.max(goalPct, 2) : 0}%` }}
+            style={{ width: `${visible ? Math.max(pct, 2) : 0}%` }}
           />
         </div>
         <p className="mt-2 text-xs text-muted-foreground">
-          Plus que {remaining} exemplaires sur les {EDITION_STOCK} de la première édition.
+          Plus que {remaining} précommandes avant la clôture.
         </p>
       </div>
     );
@@ -60,9 +60,9 @@ export function PresaleProgress({ variant = "band" }: { variant?: "band" | "inli
           <p className="eyebrow text-primary-foreground/60">Ne traînez pas</p>
           <p className="mt-3 font-display text-4xl font-black tabular-nums md:text-5xl">
             {shownOrders}
-            <span className="text-primary-foreground/50">/{PRESALE_GOAL}</span>
+            <span className="text-primary-foreground/50">/{PRESALE_LIMIT}</span>
             <span className="ml-2 align-middle text-base font-semibold text-primary-foreground/70">
-              précommandé·e·s
+              précommandes
             </span>
           </p>
 
@@ -71,19 +71,22 @@ export function PresaleProgress({ variant = "band" }: { variant?: "band" | "inli
             role="progressbar"
             aria-valuenow={orders}
             aria-valuemin={0}
-            aria-valuemax={PRESALE_GOAL}
+            aria-valuemax={PRESALE_LIMIT}
             aria-label="Progression des précommandes"
           >
             <div
               className="h-full rounded-full bg-gold transition-[width] duration-1000 ease-out"
-              style={{ width: `${visible ? Math.max(goalPct, 1.5) : 0}%` }}
+              style={{ width: `${visible ? Math.max(pct, 1.5) : 0}%` }}
             />
           </div>
 
           <p className="mt-4 text-sm text-primary-foreground/75">
-            Il reste <span className="font-semibold text-primary-foreground">{remaining}</span> jeux
-            sur les {EDITION_STOCK} de l'édition limitée. Chiffres réels, mis à jour à chaque
-            commande — la production est lancée une seule fois.
+            Ce lancement est limité à{" "}
+            <span className="font-semibold text-primary-foreground">
+              {PRESALE_LIMIT} précommandes
+            </span>{" "}
+            — il en reste <span className="font-semibold text-primary-foreground">{remaining}</span>
+            . Passé ce cap, les précommandes ferment : la production n'est lancée qu'une fois.
           </p>
         </div>
       </div>

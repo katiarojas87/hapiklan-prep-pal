@@ -1,5 +1,5 @@
 import heroProduct from "@/assets/brand/box-hero-product.webp";
-import { EDITION_STOCK } from "@/lib/hapiklan";
+import { PRESALE_LIMIT } from "@/lib/hapiklan";
 import { CopyPlaceholder } from "./CopyPlaceholder";
 
 /**
@@ -11,7 +11,7 @@ export function PresaleHero() {
     <section className="bg-cream">
       <div className="container-page grid gap-8 pb-12 pt-8 md:pb-16 md:pt-14 lg:grid-cols-2 lg:items-center lg:gap-14">
         <div className="order-2 lg:order-1">
-          <p className="eyebrow">Précommandes ouvertes · Édition limitée</p>
+          <p className="eyebrow">Précommandes ouvertes · Places limitées</p>
 
           {/* Working draft below is extracted from www.hapiklan.com — founder to confirm final wording. */}
           <h1 className="mt-3 text-[2rem] font-bold leading-[1.1] md:text-5xl lg:text-[3.3rem]">
@@ -31,7 +31,7 @@ export function PresaleHero() {
               Précommander
             </a>
             <span className="text-sm font-medium text-muted-foreground">
-              Précommandes ouvertes — stock limité à {EDITION_STOCK} exemplaires.
+              Lancement limité à {PRESALE_LIMIT} précommandes — après, c'est fermé.
             </span>
           </div>
 

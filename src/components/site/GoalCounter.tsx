@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
-import { EDITION_STOCK, PRESALE_GOAL } from "@/lib/hapiklan";
+import { PRESALE_LIMIT } from "@/lib/hapiklan";
 import { useCountUp, useReveal } from "@/hooks/use-reveal";
 
 export type Progress = { units: number; orders: number };
@@ -24,18 +24,18 @@ export function GoalCounter() {
   const { ref, visible } = useReveal<HTMLDivElement>(0.3);
 
   const orders = data?.orders ?? 0;
-  const units = data?.units ?? 0;
+  const remaining = Math.max(0, PRESALE_LIMIT - orders);
   const shown = useCountUp(orders, visible && data !== undefined);
-  const pct = Math.min(100, (orders / PRESALE_GOAL) * 100);
+  const pct = Math.min(100, (orders / PRESALE_LIMIT) * 100);
 
   return (
     <section className="bg-primary text-primary-foreground">
       <div ref={ref} className="container-page py-12 md:py-16">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="eyebrow text-primary-foreground/60">Objectif de précommande</p>
+          <p className="eyebrow text-primary-foreground/60">Précommandes limitées</p>
           <p className="mt-3 font-display text-5xl font-black tabular-nums md:text-6xl">
             {shown}
-            <span className="text-primary-foreground/50">/{PRESALE_GOAL}</span>
+            <span className="text-primary-foreground/50">/{PRESALE_LIMIT}</span>
           </p>
           <p className="mt-1 text-sm text-primary-foreground/70">précommandes confirmées</p>
 
@@ -44,7 +44,7 @@ export function GoalCounter() {
             role="progressbar"
             aria-valuenow={orders}
             aria-valuemin={0}
-            aria-valuemax={PRESALE_GOAL}
+            aria-valuemax={PRESALE_LIMIT}
             aria-label="Progression des précommandes"
           >
             <div
@@ -54,8 +54,8 @@ export function GoalCounter() {
           </div>
 
           <p className="mt-4 text-sm text-primary-foreground/70">
-            {Math.max(0, EDITION_STOCK - units)} jeux encore disponibles sur les {EDITION_STOCK} de
-            la première édition. Chiffres réels, mis à jour à chaque commande.
+            Ce lancement s'arrête à {PRESALE_LIMIT} précommandes — il en reste {remaining}. Chiffres
+            réels, mis à jour à chaque commande.
           </p>
         </div>
       </div>

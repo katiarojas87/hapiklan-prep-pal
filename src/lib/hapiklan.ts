@@ -1,6 +1,6 @@
 export const BASE_PRICE_CENTS = 5498;
-export const EDITION_STOCK = 500;
-export const PRESALE_GOAL = 200;
+/** Hard cap on the launch: pre-orders close once 200 have been placed. */
+export const PRESALE_LIMIT = 200;
 
 export type Bundle = {
   id: string;
