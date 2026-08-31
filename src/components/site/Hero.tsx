@@ -1,3 +1,5 @@
+import { Link } from "@tanstack/react-router";
+
 import heroImage from "@/assets/generated/hero-couple-placeholder.jpg";
 import { PlaceholderTag } from "./PlaceholderTag";
 
@@ -6,7 +8,7 @@ export function Hero() {
     <section className="relative overflow-hidden bg-cream">
       <div className="container-page grid gap-8 pb-12 pt-8 md:pb-20 md:pt-16 lg:grid-cols-2 lg:items-center lg:gap-14">
         <div className="order-2 lg:order-1">
-          <p className="eyebrow">Précommandes ouvertes · Édition limitée</p>
+          <p className="eyebrow">Précommandes ouvertes · Places limitées</p>
           <h1 className="mt-3 text-[2rem] font-bold leading-[1.1] md:text-5xl lg:text-[3.4rem]">
             Reprenez le contrôle de votre accouchement, à deux.
           </h1>
@@ -16,14 +18,14 @@ export function Hero() {
             trimestre, en couple.
           </p>
           <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a
-              href="#packs"
+            <Link
+              to="/productpage"
               className="inline-flex h-14 items-center justify-center rounded-full bg-primary px-8 text-base font-semibold text-primary-foreground shadow-lift transition hover:opacity-90"
             >
               Précommander — 54,98 €
-            </a>
+            </Link>
             <span className="text-sm text-muted-foreground">
-              Livraison juin 2026 · 500 jeux seulement
+              Livraison juin 2026 · 200 précommandes seulement
             </span>
           </div>
         </div>

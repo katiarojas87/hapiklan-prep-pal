@@ -16,7 +16,7 @@ import { VoucherPopup } from "@/components/site/VoucherPopup";
 
 const title = "Hapiklan — Le jeu de préparation à l'accouchement et au postpartum";
 const description =
-  "100 cartes et des vidéos de professionnels pour préparer votre grossesse, votre accouchement et votre postpartum à deux. Précommandes ouvertes, édition limitée à 500 jeux.";
+  "100 cartes et des vidéos de professionnels pour préparer votre grossesse, votre accouchement et votre postpartum à deux. Précommandes ouvertes, lancement limité à 200 précommandes.";
 
 export const Route = createFileRoute("/")({
   head: () => ({

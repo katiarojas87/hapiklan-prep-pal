@@ -232,7 +232,7 @@ export function VoucherPopup() {
                   )}
 
                   <p className="text-center text-[0.7rem] leading-relaxed text-muted-foreground">
-                    Aucun spam. Désinscription en un clic. Édition limitée à 500 jeux.
+                    Aucun spam. Désinscription en un clic. Lancement limité à 200 précommandes.
                   </p>
                 </form>
               </>

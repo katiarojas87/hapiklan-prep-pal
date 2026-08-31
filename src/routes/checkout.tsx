@@ -1,18 +1,13 @@
 import { useState } from "react";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { supabase } from "@/integrations/supabase/client";
-import {
-  BUNDLES,
-  bundleTotalCents,
-  formatEur,
-  getBundle,
-} from "@/lib/hapiklan";
+import { BUNDLES, bundleTotalCents, formatEur, getBundle } from "@/lib/hapiklan";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 
 const title = "Précommande — Hapiklan";
 const description =
-  "Finalisez votre précommande du jeu Hapiklan. Édition limitée à 500 exemplaires, livraison prévue en juin 2026.";
+  "Finalisez votre précommande du jeu Hapiklan. Lancement limité à 200 précommandes, livraison prévue en juin 2026.";
 
 export const Route = createFileRoute("/checkout")({
   validateSearch: (search: Record<string, unknown>): { pack: string } => ({
@@ -77,8 +72,8 @@ function Checkout() {
       <main className="container-page py-10 md:py-16">
         <h1 className="text-3xl font-bold md:text-4xl">Votre précommande</h1>
         <p className="mt-2 text-muted-foreground">
-          Édition limitée · livraison prévue juin 2026 · annulation et remboursement possibles
-          jusqu'à l'expédition.
+          Lancement limité à 200 précommandes · livraison prévue juin 2026 · annulation et
+          remboursement possibles jusqu'à l'expédition.
         </p>
 
         <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_22rem] lg:items-start">

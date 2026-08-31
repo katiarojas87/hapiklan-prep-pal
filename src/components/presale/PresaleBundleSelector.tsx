@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "@tanstack/react-router";
+
 import {
   BUNDLES,
   bundleFullPriceCents,
@@ -7,9 +7,11 @@ import {
   bundleUnitCents,
   formatEur,
 } from "@/lib/hapiklan";
+import { useCheckout } from "@/lib/checkout";
 import boxSingle from "@/assets/brand/box-booklet.webp";
 import boxDouble from "@/assets/brand/boxes-trio.webp";
 import boxQuad from "@/assets/brand/boxes-multi.webp";
+import { PresaleProgress } from "./PresaleProgress";
 
 const images: Record<string, string> = {
   couple: boxSingle,
@@ -17,9 +19,15 @@ const images: Record<string, string> = {
   village: boxQuad,
 };
 
-export function BundleSelector() {
+/**
+ * Section 2 — interactive bundle selector, directly under the hero.
+ * Three existing bundles (pack-size variants of one SKU). Selecting a bundle
+ * updates price + CTA in place; every CTA routes into the same bundle-aware
+ * checkout hand-off (`useCheckout` → Wix-hosted checkout once wired).
+ */
+export function PresaleBundleSelector() {
   const [selectedId, setSelectedId] = useState(BUNDLES[0].id);
-  const navigate = useNavigate();
+  const startCheckout = useCheckout();
   const selected = BUNDLES.find((b) => b.id === selectedId)!;
   const total = bundleTotalCents(selected);
   const full = bundleFullPriceCents(selected);
@@ -36,15 +44,20 @@ export function BundleSelector() {
           partagez, moins vous payez.
         </p>
 
-        <div className="mt-8 grid gap-4 lg:grid-cols-3">
+        <div
+          className="mt-8 grid gap-4 lg:grid-cols-3"
+          role="radiogroup"
+          aria-label="Choix du pack"
+        >
           {BUNDLES.map((b) => {
             const active = b.id === selectedId;
             return (
               <button
                 key={b.id}
                 type="button"
+                role="radio"
+                aria-checked={active}
                 onClick={() => setSelectedId(b.id)}
-                aria-pressed={active}
                 className={[
                   "relative flex w-full items-center gap-4 rounded-2xl border-2 bg-card p-4 text-left transition lg:flex-col lg:items-start lg:p-5",
                   active
@@ -74,7 +87,7 @@ export function BundleSelector() {
                     >
                       {active && <span className="h-2 w-2 rounded-full bg-primary-foreground" />}
                     </span>
-                    <h3 className="font-display text-base font-semibold pr-14 lg:pr-0">
+                    <h3 className="pr-14 font-display text-base font-semibold lg:pr-0">
                       {b.units}× {b.name}
                     </h3>
                   </div>
@@ -96,32 +109,37 @@ export function BundleSelector() {
           })}
         </div>
 
-        <div className="sticky bottom-3 z-30 mt-6 rounded-2xl border border-border bg-card p-4 shadow-lift md:static md:mt-8 md:flex md:items-center md:justify-between md:gap-6 md:p-6">
-          <div>
-            <p className="text-sm text-muted-foreground">
-              Pack sélectionné :{" "}
-              <span className="font-semibold text-foreground">{selected.name}</span> ·{" "}
-              {selected.units} jeu{selected.units > 1 ? "x" : ""}
-            </p>
-            <p className="font-display text-3xl font-black tabular-nums">
-              {formatEur(total)}
-              {total < full && (
-                <span className="ml-2 text-base font-normal text-muted-foreground line-through">
-                  {formatEur(full)}
-                </span>
-              )}
-            </p>
-            <p className="text-xs text-muted-foreground">
-              TVA incluse · livraison prévue juin 2026
-            </p>
+        <div className="mt-6 grid gap-4 md:mt-8 lg:grid-cols-[1fr_20rem] lg:items-stretch">
+          <div className="sticky bottom-3 z-30 rounded-2xl border border-border bg-card p-4 shadow-lift md:static md:flex md:items-center md:justify-between md:gap-6 md:p-6">
+            <div>
+              <p className="text-sm text-muted-foreground">
+                Pack sélectionné :{" "}
+                <span className="font-semibold text-foreground">{selected.name}</span> ·{" "}
+                {selected.units} jeu{selected.units > 1 ? "x" : ""}
+              </p>
+              <p className="font-display text-3xl font-black tabular-nums">
+                {formatEur(total)}
+                {total < full && (
+                  <span className="ml-2 text-base font-normal text-muted-foreground line-through">
+                    {formatEur(full)}
+                  </span>
+                )}
+              </p>
+              <p className="text-xs text-muted-foreground">
+                TVA incluse · livraison prévue juin 2026
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => startCheckout(selected.id)}
+              className="mt-3 inline-flex h-14 w-full items-center justify-center rounded-full bg-primary px-8 text-base font-semibold text-primary-foreground transition hover:opacity-90 md:mt-0 md:w-auto"
+            >
+              Précommander — {formatEur(total)}
+            </button>
           </div>
-          <button
-            type="button"
-            onClick={() => navigate({ to: "/productpage" })}
-            className="mt-3 inline-flex h-14 w-full items-center justify-center rounded-full bg-primary px-8 text-base font-semibold text-primary-foreground transition hover:opacity-90 md:mt-0 md:w-auto"
-          >
-            Précommander
-          </button>
+
+          {/* Reused progress component, compact variant, right next to the CTA. */}
+          <PresaleProgress variant="inline" />
         </div>
       </div>
     </section>
