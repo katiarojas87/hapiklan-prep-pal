@@ -99,8 +99,9 @@ export function BundleSelector() {
         <div className="sticky bottom-3 z-30 mt-6 rounded-2xl border border-border bg-card p-4 shadow-lift md:static md:mt-8 md:flex md:items-center md:justify-between md:gap-6 md:p-6">
           <div>
             <p className="text-sm text-muted-foreground">
-              Pack sélectionné : <span className="font-semibold text-foreground">{selected.name}</span>{" "}
-              · {selected.units} jeu{selected.units > 1 ? "x" : ""}
+              Pack sélectionné :{" "}
+              <span className="font-semibold text-foreground">{selected.name}</span> ·{" "}
+              {selected.units} jeu{selected.units > 1 ? "x" : ""}
             </p>
             <p className="font-display text-3xl font-black tabular-nums">
               {formatEur(total)}
@@ -110,11 +111,13 @@ export function BundleSelector() {
                 </span>
               )}
             </p>
-            <p className="text-xs text-muted-foreground">TVA incluse · livraison prévue juin 2026</p>
+            <p className="text-xs text-muted-foreground">
+              TVA incluse · livraison prévue juin 2026
+            </p>
           </div>
           <button
             type="button"
-            onClick={() => navigate({ to: "/checkout", search: { pack: selected.id } })}
+            onClick={() => navigate({ to: "/productpage" })}
             className="mt-3 inline-flex h-14 w-full items-center justify-center rounded-full bg-primary px-8 text-base font-semibold text-primary-foreground transition hover:opacity-90 md:mt-0 md:w-auto"
           >
             Précommander

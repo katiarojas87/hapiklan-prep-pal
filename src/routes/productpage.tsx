@@ -17,7 +17,7 @@ const title = "Précommander le jeu Hapiklan — édition limitée à 500 exempl
 const description =
   "Précommandez le jeu Hapiklan : 100 cartes pour préparer votre grossesse, votre accouchement et votre postpartum à deux. Paiement à la commande, livraison juin 2026, édition limitée à 500 exemplaires.";
 
-export const Route = createFileRoute("/precommande")({
+export const Route = createFileRoute("/productpage")({
   head: () => ({
     meta: [
       { title },

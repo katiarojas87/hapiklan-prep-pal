@@ -20,12 +20,12 @@ export function Header() {
             Questions
           </a>
         </nav>
-        <a
-          href="#packs"
+        <Link
+          to="/productpage"
           className="rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
         >
           Précommander
-        </a>
+        </Link>
       </div>
     </header>
   );

@@ -1,3 +1,5 @@
+import { Link } from "@tanstack/react-router";
+
 import heroImage from "@/assets/generated/hero-couple-placeholder.jpg";
 import { PlaceholderTag } from "./PlaceholderTag";
 
@@ -16,12 +18,12 @@ export function Hero() {
             trimestre, en couple.
           </p>
           <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a
-              href="#packs"
+            <Link
+              to="/productpage"
               className="inline-flex h-14 items-center justify-center rounded-full bg-primary px-8 text-base font-semibold text-primary-foreground shadow-lift transition hover:opacity-90"
             >
               Précommander — 54,98 €
-            </a>
+            </Link>
             <span className="text-sm text-muted-foreground">
               Livraison juin 2026 · 500 jeux seulement
             </span>
